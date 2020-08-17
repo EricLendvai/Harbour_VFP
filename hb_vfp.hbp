@@ -10,6 +10,9 @@
 #The following settings are done via the BuildLIB.bat
 #-w3 -es2
 
+#To generate non pcode source code
+-gc3
+
 #-hbx=${hb_name}.hbx
 ${hb_name}.hbx
 
