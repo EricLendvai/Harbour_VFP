@@ -1,0 +1,22 @@
+-hblib
+
+#To enabled progressing recompilation uncomment the following line
+-inc
+
+-workdir=${HB_COMPILER}\${BuildMode}\hbmk2\
+
+-o${HB_COMPILER}\${BuildMode}\${hb_name}
+
+#The following settings are done via the BuildLIB.bat
+#-w3 -es2
+
+#-hbx=${hb_name}.hbx
+${hb_name}.hbx
+
+hb_vfp.prg
+
+#The following 2 files will be merged in live Harbour later probably, or at least their changes
+vfp_strtran.c
+vfp_StrReplace.c
+
+debugger.hbm
