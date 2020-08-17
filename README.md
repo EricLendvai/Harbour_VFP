@@ -15,4 +15,4 @@ To have VFP functionality overwrite Harbour functions and behavior:
 #include "vfp.ch"
 
 This repo is relying on VSCODE for calling the BuildLIB.bat Batch file under Microsoft Windows 10.
-Ensure you change any path to your local install location. An easy way to locate any path, search for "R:\"
+Ensure you change any path to your local install location. An easy way to locate any path, search for "R:\\"
