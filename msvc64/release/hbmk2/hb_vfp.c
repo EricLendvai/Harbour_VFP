@@ -5,7 +5,9 @@
  */
 
 #include "hbvmpub.h"
+#include "hbpcode.h"
 #include "hbinit.h"
+#include "hbxvm.h"
 
 
 HB_FUNC( VFP_GETCOMPATIBILITYPACKVERSION );
@@ -58,69 +60,236 @@ HB_INIT_SYMBOLS_EX_END( hb_vm_SymbolInit_HB_VFP, "hb_vfp.prg", 0x0, 0x0003 )
 
 HB_FUNC( VFP_GETCOMPATIBILITYPACKVERSION )
 {
-	static const HB_BYTE pcode[] =
-	{
-		36,18,0,176,1,0,20,0,36,19,0,101,154,153,
-		153,153,153,153,241,63,10,1,110,7
-	};
-
-	hb_vmExecute( pcode, symbols );
+   do {
+	hb_xvmSetLine( 16 );
+	hb_xvmPushFuncSymbol( symbols + 1 );
+	if( hb_xvmDo( 0 ) ) break;
+	hb_xvmSetLine( 17 );
+	hb_xvmPushDouble( * ( double * ) "\xCD\xCC\xCC\xCC\xCC\xCC\xF4\?", 10, 1 );
+	hb_xvmRetValue();
+	/* *** END PROC *** */
+   } while( 0 );
 }
 
 HB_FUNC( VFP_SCANSTACK )
 {
-	static const HB_BYTE pcode[] =
+   HB_BOOL fValue;
+   do {
+	hb_xvmFrame( 1, 1 );
+	hb_xvmSFrame( symbols + 17 );
+	hb_xvmSetLine( 21 );
+	hb_xvmPushNil();
+	hb_xvmPopLocal( 2 );
+	hb_xvmSetLine( 25 );
+	hb_xvmPushFuncSymbol( symbols + 3 );
+	hb_xvmPushLocalByRef( 1 );
+	hb_xvmPushStringConst( "scan", 4 );
+	if( hb_xvmDo( 2 ) ) break;
+	hb_xvmSetLine( 27 );
+	goto lab00006;
+lab00001: ;
+	hb_xvmSetLine( 29 );
+	hb_xvmPushStaticByRef( 1 );
+	if( hb_xvmIncEqPop() ) break;
+	hb_xvmSetLine( 30 );
+	hb_xvmPushFuncSymbol( symbols + 4 );
+	hb_xvmPushStatic( 2 );
+	if( hb_xvmFunction( 1 ) ) break;
+	hb_xvmPushStatic( 1 );
+	if( hb_xvmLess() ) break;
+	if( hb_xvmPopLogical( &fValue ) ) break;
+	if( ! fValue )
+		goto lab00002;
+	hb_xvmSetLine( 31 );
+	hb_xvmPushFuncSymbol( symbols + 5 );
+	hb_xvmPushStatic( 2 );
+	hb_xvmPushStatic( 1 );
+	if( hb_xvmDo( 2 ) ) break;
+lab00002: ;
+	hb_xvmSetLine( 33 );
+	hb_xvmPushFuncSymbol( symbols + 6 );
+	if( hb_xvmFunction( 0 ) ) break;
+	hb_xvmPushLogical( HB_TRUE );
+	hb_xvmArrayGen( 2 );
+	hb_xvmPushStatic( 2 );
+	hb_xvmPushStatic( 1 );
+	if( hb_xvmArrayPop() ) break;
+	hb_xvmSetLine( 34 );
+	hb_xvmPushNil();
+	hb_xvmPopLocal( 2 );
+	goto lab00007;
+lab00003: ;
+	hb_xvmSetLine( 37 );
+	hb_xvmPushStaticByRef( 1 );
+	if( hb_xvmDecEqPop() ) break;
+	goto lab00007;
+lab00004: ;
+	hb_xvmSetLine( 41 );
+	hb_xvmPushInteger( 0 );
+	hb_xvmPopStatic( 1 );
+	hb_xvmSetLine( 42 );
+	hb_xvmPushFuncSymbol( symbols + 5 );
+	hb_xvmPushStatic( 2 );
+	hb_xvmPushInteger( 0 );
+	if( hb_xvmDo( 2 ) ) break;
+	goto lab00007;
+lab00005: ;
+	hb_xvmSetLine( 45 );
+	hb_xvmPushFuncSymbol( symbols + 7 );
+	hb_xvmPushStatic( 2 );
+	hb_xvmPushStatic( 1 );
+	if( hb_xvmArrayPush() ) break;
+	if( hb_xvmArrayItemPush( 1L ) ) break;
+	if( hb_xvmDo( 1 ) ) break;
+	hb_xvmSetLine( 46 );
+	hb_xvmPushStatic( 2 );
+	hb_xvmPushStatic( 1 );
+	if( hb_xvmArrayPush() ) break;
+	if( hb_xvmArrayItemPush( 2L ) ) break;
+	hb_xvmPopLocal( 2 );
+	hb_xvmSetLine( 47 );
+	hb_xvmPushLogical( HB_FALSE );
+	hb_xvmPushStatic( 2 );
+	hb_xvmPushStatic( 1 );
+	if( hb_xvmArrayPush() ) break;
+	if( hb_xvmArrayItemPop( 2L ) ) break;
+	goto lab00007;
+lab00006: ;
+	hb_xvmPushLocal( 1 );
 	{
-		13,1,1,116,17,0,36,23,0,100,80,2,36,27,
-		0,176,3,0,96,1,0,106,5,115,99,97,110,0,
-		20,2,36,29,0,26,147,0,36,31,0,104,1,0,
-		170,36,32,0,176,4,0,103,2,0,12,1,103,1,
-		0,35,28,16,36,33,0,176,5,0,103,2,0,103,
-		1,0,20,2,36,35,0,176,6,0,12,0,120,4,
-		2,0,103,2,0,103,1,0,2,36,36,0,100,80,
-		2,26,117,0,36,39,0,104,1,0,169,25,107,36,
-		43,0,121,82,1,0,36,44,0,176,5,0,103,2,
-		0,121,20,2,25,86,36,47,0,176,7,0,103,2,
-		0,103,1,0,1,122,1,20,1,36,48,0,103,2,
-		0,103,1,0,1,92,2,1,80,2,36,49,0,9,
-		103,2,0,103,1,0,1,92,2,2,25,38,95,1,
-		133,4,0,106,5,112,117,115,104,0,26,100,255,106,
-		4,112,111,112,0,25,157,106,6,99,108,101,97,114,
-		0,25,156,100,25,174,36,53,0,95,2,110,7
-	};
-
-	hb_vmExecute( pcode, symbols );
+		PHB_ITEM pSwitch;
+		HB_TYPE type;
+		const char * pszText;
+		HB_SIZE nLen;
+		if( hb_xvmSwitchGet( &pSwitch ) ) break;
+		type = hb_itemType( pSwitch );
+		pszText = ( type & HB_IT_STRING ) ? hb_itemGetCPtr( pSwitch ) : NULL;
+		nLen = pszText ? hb_itemGetCLen( pSwitch ) : 0;
+		if( pszText && nLen == 4 && ! memcmp( pszText, "push", 4 ) )
+		{
+			hb_stackPop();
+			goto lab00001;
+		}
+		if( pszText && nLen == 3 && ! memcmp( pszText, "pop", 3 ) )
+		{
+			hb_stackPop();
+			goto lab00003;
+		}
+		if( pszText && nLen == 5 && ! memcmp( pszText, "clear", 5 ) )
+		{
+			hb_stackPop();
+			goto lab00004;
+		}
+		{
+			hb_stackPop();
+			goto lab00005;
+		}
+	}
+lab00007: ;
+	hb_xvmSetLine( 51 );
+	hb_xvmPushLocal( 2 );
+	hb_xvmRetValue();
+	/* *** END PROC *** */
+   } while( 0 );
 }
 
 HB_FUNC( VFP_STRTOFILE )
 {
-	static const HB_BYTE pcode[] =
-	{
-		13,3,3,36,58,0,121,80,5,36,61,0,176,9,
-		0,95,3,9,12,2,80,4,36,63,0,176,10,0,
-		95,2,12,1,28,74,36,64,0,95,4,28,30,36,
-		65,0,176,11,0,95,2,122,12,2,80,6,36,66,
-		0,176,12,0,95,6,121,92,2,20,3,25,51,36,
-		68,0,176,13,0,95,2,12,1,121,8,28,16,36,
-		69,0,176,14,0,95,2,12,1,80,6,25,9,36,
-		71,0,92,255,80,6,25,14,36,75,0,176,14,0,
-		95,2,12,1,80,6,36,78,0,95,6,121,16,28,
-		26,36,79,0,176,15,0,95,6,95,1,12,2,80,
-		5,36,80,0,176,16,0,95,6,20,1,36,83,0,
-		95,5,110,7
-	};
-
-	hb_vmExecute( pcode, symbols );
+   HB_BOOL fValue;
+   do {
+	hb_xvmFrame( 3, 3 );
+	hb_xvmSetLine( 56 );
+	hb_xvmLocalSetInt( 5, 0L );
+	hb_xvmSetLine( 59 );
+	hb_xvmPushFuncSymbol( symbols + 9 );
+	hb_xvmPushLocal( 3 );
+	hb_xvmPushLogical( HB_FALSE );
+	if( hb_xvmFunction( 2 ) ) break;
+	hb_xvmPopLocal( 4 );
+	hb_xvmSetLine( 61 );
+	hb_xvmPushFuncSymbol( symbols + 10 );
+	hb_xvmPushLocal( 2 );
+	if( hb_xvmFunction( 1 ) ) break;
+	if( hb_xvmPopLogical( &fValue ) ) break;
+	if( ! fValue )
+		goto lab00004;
+	hb_xvmSetLine( 62 );
+	hb_xvmPushLocal( 4 );
+	if( hb_xvmPopLogical( &fValue ) ) break;
+	if( ! fValue )
+		goto lab00001;
+	hb_xvmSetLine( 63 );
+	hb_xvmPushFuncSymbol( symbols + 11 );
+	hb_xvmPushLocal( 2 );
+	hb_xvmPushInteger( 1 );
+	if( hb_xvmFunction( 2 ) ) break;
+	hb_xvmPopLocal( 6 );
+	hb_xvmSetLine( 64 );
+	hb_xvmPushFuncSymbol( symbols + 12 );
+	hb_xvmPushLocal( 6 );
+	hb_xvmPushInteger( 0 );
+	hb_xvmPushInteger( 2 );
+	if( hb_xvmDo( 3 ) ) break;
+	goto lab00005;
+lab00001: ;
+	hb_xvmSetLine( 66 );
+	hb_xvmPushFuncSymbol( symbols + 13 );
+	hb_xvmPushLocal( 2 );
+	if( hb_xvmFunction( 1 ) ) break;
+	if( hb_xvmEqualIntIs( 0L, &fValue ) ) break;
+	if( !fValue )
+		goto lab00002;
+	hb_xvmSetLine( 67 );
+	hb_xvmPushFuncSymbol( symbols + 14 );
+	hb_xvmPushLocal( 2 );
+	if( hb_xvmFunction( 1 ) ) break;
+	hb_xvmPopLocal( 6 );
+	goto lab00003;
+lab00002: ;
+	hb_xvmSetLine( 69 );
+	hb_xvmLocalSetInt( 6, -1L );
+lab00003: ;
+	goto lab00005;
+lab00004: ;
+	hb_xvmSetLine( 73 );
+	hb_xvmPushFuncSymbol( symbols + 14 );
+	hb_xvmPushLocal( 2 );
+	if( hb_xvmFunction( 1 ) ) break;
+	hb_xvmPopLocal( 6 );
+lab00005: ;
+	hb_xvmSetLine( 76 );
+	hb_xvmPushLocal( 6 );
+	if( hb_xvmGreaterEqualThenIntIs( 0L, &fValue ) ) break;
+	if( !fValue )
+		goto lab00006;
+	hb_xvmSetLine( 77 );
+	hb_xvmPushFuncSymbol( symbols + 15 );
+	hb_xvmPushLocal( 6 );
+	hb_xvmPushLocal( 1 );
+	if( hb_xvmFunction( 2 ) ) break;
+	hb_xvmPopLocal( 5 );
+	hb_xvmSetLine( 78 );
+	hb_xvmPushFuncSymbol( symbols + 16 );
+	hb_xvmPushLocal( 6 );
+	if( hb_xvmDo( 1 ) ) break;
+lab00006: ;
+	hb_xvmSetLine( 81 );
+	hb_xvmPushLocal( 5 );
+	hb_xvmRetValue();
+	/* *** END PROC *** */
+   } while( 0 );
 }
 
 HB_FUNC_INITSTATICS()
 {
-	static const HB_BYTE pcode[] =
-	{
-		117,17,0,2,0,116,17,0,121,82,1,0,4,0,
-		0,82,2,0,7
-	};
-
-	hb_vmExecute( pcode, symbols );
+   do {
+	hb_xvmStatics( symbols + 17, 2 );
+	hb_xvmSFrame( symbols + 17 );
+	hb_xvmPushInteger( 0 );
+	hb_xvmPopStatic( 1 );
+	hb_xvmArrayGen( 0 );
+	hb_xvmPopStatic( 2 );
+	/* *** END PROC *** */
+   } while( 0 );
 }
 

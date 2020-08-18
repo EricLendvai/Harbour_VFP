@@ -2,8 +2,6 @@
 
 #include "fileio.ch"
 
-//ANNOUNCE HB_VFP
-
 // #define DEVELOPMENTMODE
 // #ifdef DEVELOPMENTMODE
 // #endif

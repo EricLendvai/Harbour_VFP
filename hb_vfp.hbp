@@ -13,8 +13,11 @@
 #To generate non pcode source code
 -gc3
 
-#-hbx=${hb_name}.hbx
-${hb_name}.hbx
+#To generate an hbx file that could be consumed by client exes and other libs
+-hbx=${hb_name}.hbx
+
+#Example of how to consume this library
+#${hb_name}.hbx
 
 hb_vfp.prg
 
