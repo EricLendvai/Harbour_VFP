@@ -16,3 +16,32 @@ To have VFP functionality overwrite Harbour functions and behavior:
 
 This repo is relying on VSCODE for calling the BuildLIB.bat Batch file under Microsoft Windows 10.
 Ensure you change any path to your local install location. An easy way to locate any path, search for "R:\\"
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Review the test.prg file in the Test folder to see the SCAN ... ENDSCAN in action. 
+This is NOT the same behaviour as in the hbfoxpro contrib!
+The SCAN ... ENDSCAN commands behaves as documented in https://harbour.wiki/index.asp?page=ShowVFPHelp&ID=3741
+One of the most important features of the SCAN command is that the workarea is always reset to the one before entering the loop.
+The LOOP command will execute the closest SCAN command.
+The EXIT command will exit the most inner SCAN ... ENDSCAN and not reset the workarea.
+
+In the following example, we have a list of clients, with related invoices, which in turn have related items.
+The example show how simple it is to use three nested SCAN ... ENDSCAN loops.
+
+select client
+scan all
+    ?"Client: "+Trim(client->name)
+    select invoice
+    scan all for invoice->p_client == client->key
+        ?"  Invoice #: "+Trim(invoice->number)
+        select item
+        scan all for item->p_invoice == invoice->key
+            if item->qty > 30
+                select client  //This line will have no effect, since the "scan" will be executed, the workarea with switch back to "item"
+                loop
+            endif
+            ?"    Item Qty/Description: "+Ltrim(str(item->qty))+" - "+Trim(item->desc)
+        endscan
+    endscan
+endscan
