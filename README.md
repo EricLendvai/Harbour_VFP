@@ -29,6 +29,7 @@ The EXIT command will exit the most inner SCAN ... ENDSCAN and not reset the wor
 In the following example, we have a list of clients, with related invoices, which in turn have related items.
 The example show how simple it is to use three nested SCAN ... ENDSCAN loops.
 
+```
 select client
 scan all
     ?"Client: "+Trim(client->name)
@@ -45,3 +46,4 @@ scan all
         endscan
     endscan
 endscan
+```
