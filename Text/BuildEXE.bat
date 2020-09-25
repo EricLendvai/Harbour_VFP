@@ -44,11 +44,10 @@ if exist %HB_COMPILER%\%BuildMode%\%EXEName%.exe (
 	goto End
 )
 
-::	-b        = debug
-::  /w3       = warn for variable declarations
-::  /es2      = process warning as errors
-::  /gc3      = Pure C code with no HVM
-::  /p        = Leave generated ppo files
+::  -b        = debug
+::  -w3       = warn for variable declarations
+::  -es2      = process warning as errors
+::  -p        = Leave generated ppo files
 
 if %BuildMode% == debug (
 	copy debugger_on.hbm debugger.hbm

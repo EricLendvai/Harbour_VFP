@@ -1,6 +1,7 @@
 //Copyright (c) 2020 Eric Lendvai MIT License
 
 #include "fileio.ch"
+#include "dbinfo.ch"
 
 // #define DEVELOPMENTMODE
 // #ifdef DEVELOPMENTMODE
@@ -13,14 +14,14 @@
 //=================================================================================================================
 //=================================================================================================================
 function VFP_GetCompatibilityPackVersion()
-altd()
+// altd()
 return 1.3
 //=================================================================================================================
 //The VFP_ScanStack is to be used in conjuntion with the "#command SCAN" and "#command ENDSCAN"
 function VFP_ScanStack(par_action)    //action = "push" "pop" "scan" , "clear" (empty the entire stack)
 local xResult := nil
 static iTop   := 0
-static aStack := {}
+static aStack := {}     //Will hold an array [WorkArea,.t. if first loop]
 
 hb_default( @par_action, "scan" )
 
@@ -80,4 +81,59 @@ endif
 
 return nBytesWritten
 //=================================================================================================================
+function VFP_dbf(par_xalias)
+
+//Sadly will only return the file name, not the fullpath
+
+//Notes for future solution to get the file name with the path
+//Following Will return the file handle instead
+hb_vfp_SendToDebugView("Table File Handle",(par_xalias)->(DbInfo(DBI_FILEHANDLE)))
+// See https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfinalpathnamebyhandlea
+// See https://docs.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getfinalpathnamebyhandlew
+// See c:\harbour\src\rtl\fslink.c for example code for Windows api call
+
+return (par_xalias)->(DbInfo(DBI_FULLPATH))   //Does not include the fullpath!
+//=================================================================================================================
+//=================================================================================================================
+function hb_vfp_SendToDebugView(cStep,xValue)
+    local cTypeOfxValue
+    local cValue := "Unknown Value"
+    
+    cTypeOfxValue := ValType(xValue)
+    
+    do case
+    case pcount() < 2
+        cValue := ""
+    case cTypeOfxValue $ "AH" // Array or Hash
+        cValue := hb_ValToExp(xValue)
+    case cTypeOfxValue == "B" // Block
+        //Not coded yet
+    case cTypeOfxValue == "C" // Character (string)
+        cValue := xValue
+        //Not coded yet
+    case cTypeOfxValue == "D" // Date
+        cValue := DTOC(xValue)
+    case cTypeOfxValue == "L" // Logical
+        cValue := IIF(xValue,"True","False")
+    case cTypeOfxValue == "M" // Memo
+        //Not coded yet
+    case cTypeOfxValue == "N" // Numeric
+        cValue := alltrim(str(xValue))
+    case cTypeOfxValue == "O" // Object
+        //Not coded yet
+    case cTypeOfxValue == "P" // Pointer
+        //Not coded yet
+    case cTypeOfxValue == "S" // Symbol
+        //Not coded yet
+    case cTypeOfxValue == "U" // NIL
+        cValue := "Null"
+    endcase
+    
+    if empty(cValue)
+        hb_vfp_OutputDebugString("[Harbour] VFP "+cStep)
+    else
+        hb_vfp_OutputDebugString("[Harbour] VFP "+cStep+" - "+cValue)
+    endif
+    
+return .T.
 //=================================================================================================================

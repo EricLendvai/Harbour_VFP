@@ -11,12 +11,14 @@
 -o${HB_COMPILER}\${BuildMode}\${EXEName}
 
 
-#Update the Path where the HB_ORM and HB_VFP package is installed
--incpath=R:\Harbour_VFP\
-
+#To include the hb_vfp module, and even alow its debugging
+-incpath=${HB_VFP_ROOT}\
 #Update the Path where the HB_VFP package is installed
--LR:\Harbour_VFP\${HB_COMPILER}\${BuildMode}
+-L${HB_VFP_ROOT}\${HB_COMPILER}\${BuildMode}
 -lhb_vfp
+#following will force linking of all hb_vfp modules
+${HB_VFP_ROOT}\${HB_COMPILER}\${BuildMode}\hb_vfp.hbx
+
 
 -workdir=${HB_COMPILER}\${BuildMode}\hbmk2\
 

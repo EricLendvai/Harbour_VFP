@@ -10,6 +10,7 @@
             "options": {
                 "cwd": "${workspaceFolder}",
                 "env": {
+                    "HB_VFP_ROOT":"r:\\Harbour_vfp",
                     "EXEName":"Test",
                     "BuildMode":"release",
                     "HB_COMPILER":"${input:CCompiler}"
@@ -31,6 +32,7 @@
             "options": {
                 "cwd": "${workspaceFolder}",
                 "env": {
+                    "HB_VFP_ROOT":"r:\\Harbour_vfp",
                     "EXEName":"Test",
                     "BuildMode":"debug",
 					// "HB_COMPILER":"${input:CCompiler}"

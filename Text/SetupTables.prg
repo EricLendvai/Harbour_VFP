@@ -21,13 +21,16 @@ local lUpdateTableStructure := .f.
 local aStructure
 local nPos
 
+//Field Structure = {FieldName,FieldType,FieldLength,FieldDec}
+//Index Structure = {TagName,TagExpression,Unique,Order}
+
 local aSchema := { ;
     {"CLIENT",{;
         {"KEY" ,"I:+",  4,0},;
         {"NAME","C"  ,180,0};
         },{;
-        {"KEY" ,"KEY"        ,.f.},;
-        {"TAG1","UPPER(NAME)",.f.};
+        {"KEY" ,"KEY"        ,.f.,"A"},;
+        {"TAG1","UPPER(NAME)",.f.,"A"};
         };
     },;
     {"INVOICE",{;
@@ -35,8 +38,8 @@ local aSchema := { ;
         {"P_CLIENT","I"  , 4,0},;
         {"NUMBER"  ,"C"  ,10,0};
         },{;
-        {"KEY"   ,"KEY"   ,.f.},;
-        {"NUMBER","NUMBER",.f.};
+        {"KEY"   ,"KEY"   ,.f.,"A"},;
+        {"NUMBER","NUMBER",.f.,"D"};
         };
     },;
     {"ITEM",{;
@@ -45,7 +48,7 @@ local aSchema := { ;
         {"QTY"      ,"N"  ,  5,0},;
         {"DESC"     ,"C"  ,100,0};
         },{;
-        {"KEY"   ,"KEY"   ,.f.};
+        {"KEY"   ,"KEY"   ,.f.,"A"};
         };
     };
 }
@@ -138,6 +141,8 @@ for each aTableSchema in aSchema
             select 0
             if dbUseArea(.t.,"DBFCDX", cTableName+".dbf", cTableName, .f., .f., "EN")
                 for each aTag in aTableTags
+                    //ordCondSet( [<cForCondition>], [<bForCondition>], [<lAllRecords>], [<bWhileCondition>], [<bEval>], [<nInterval>], [<nStart>], [<nNext>], [<nRecord>], [<lRest>], [<lDescend>], [<reserved>], [<lAdditive>], [<lCurrent>], [<lCustom>], [<lNoOptimize>], [<cWhileCondition>], [<lTemporary>], [<lUseFilter>], [<lExclusive>]) 
+                    ordCondSet(,,,,,,,,,, (upper(left(aTag[4],1)) == "D") ,,,,,,,,,)
                     ordCreate(cTableName+".cdx",aTag[1],aTag[2],,aTag[3])
                 endfor
                 dbCloseArea()

@@ -10,3 +10,4 @@
 .hbmk
 *.NotInGit
 Thumbs.db
+*.log

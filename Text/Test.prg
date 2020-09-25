@@ -17,6 +17,8 @@ if OpenTable("client" ,.t.,.f.) .and.;
    OpenTable("invoice",.t.,.f.) .and.;
    OpenTable("item"   ,.t.,.f.)
 
+    //?vfp_dbf("client")
+
     if client->(reccount()) == 0  //Only add records if none are present
         if client->(dbappend())
             client->name :="Marie Curie"

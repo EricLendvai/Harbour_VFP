@@ -25,7 +25,12 @@
 				{
 					"name": "<Run Non Debug Mingw64>",
 					"command": "R:\\Harbour_VFP\\mingw64\\release\\Test.exe"
-				}
+				},
+                {
+                    "name":"<del *.ppo>",
+                    "cwd": "${workspaceFolder}",
+                    "command" : "del *.ppo"
+                }
 			]
 		}
 	

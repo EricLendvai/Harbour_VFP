@@ -41,11 +41,10 @@ md %HB_COMPILER%\%BuildMode%\hbmk2 2>nul
 del %HB_COMPILER%\%BuildMode%\*.a 2>nul
 rem del %HB_COMPILER%\%BuildMode%\*.lib 2>nul
 
-::	-b        = debug
-::  /w3       = warn for variable declarations
-::  /es2      = process warning as errors
-::  /gc3      = Pure C code with no HVM
-::  /p        = Leave generated ppo files
+::  -b        = debug
+::  -w3       = warn for variable declarations
+::  -es2      = process warning as errors
+::  -p        = Leave generated ppo files
 
 :: since this is a library will also fail on warnings.
 
@@ -54,6 +53,8 @@ if %BuildMode% == debug (
     hbmk2 %LIBName%.hbp -b -p -w3 -es2
 ) else (
 	copy debugger_off.hbm debugger.hbm
+    copy *.ch %HB_COMPILER%\%BuildMode%\
+    del %HB_COMPILER%\%BuildMode%\*.ppo
 	hbmk2 %LIBName%.hbp -w3 -es2
 )
 
@@ -65,10 +66,14 @@ if %SUCCESS% == F (
 	echo Failed To build Library
 ) else (
 	if errorlevel 0 (
+rem     since debug and release have different .hbx file, localize it
+        copy %LIBName%.hbx %HB_COMPILER%\%BuildMode%\ >nul
+        del %LIBName%.hbx >nul
+        
 		echo.
 		echo No Errors
 		echo.
-		echo Ready            BuildMode = %BuildMode%
+		echo Ready          BuildMode = %BuildMode%          C Compiler = %HB_COMPILER%
         if %BuildMode% == release (
 rem            echo -----------------------------------------------------------------------------------------------
 rem            echo.

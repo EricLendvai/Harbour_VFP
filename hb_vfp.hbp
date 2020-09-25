@@ -1,7 +1,7 @@
 -hblib
 
 #To enabled progressing recompilation uncomment the following line
--inc
+#-inc
 
 -workdir=${HB_COMPILER}\${BuildMode}\hbmk2\
 
@@ -20,6 +20,8 @@
 #${hb_name}.hbx
 
 hb_vfp.prg
+
+hb_vfp_c.c
 
 #The following 2 files will be merged in live Harbour later probably, or at least their changes
 vfp_strtran.c
