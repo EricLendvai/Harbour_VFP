@@ -100,8 +100,8 @@ for each aTableSchema in aSchema
                             aStructureOnFile[nPos,2] := "T"
                         endif
                         if (aStructureOnFile[nPos,2] <> aStructure[2]) .or. ;
-                        (aStructureOnFile[nPos,3] <> aStructure[3]) .or. ;
-                        (aStructureOnFile[nPos,4] <> aStructure[4])
+                           (aStructureOnFile[nPos,3] <> aStructure[3]) .or. ;
+                           (aStructureOnFile[nPos,4] <> aStructure[4])
                             lUpdateTableStructure := .t.
                             exit
                         endif
