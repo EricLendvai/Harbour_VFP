@@ -1,4 +1,4 @@
-//Copyright (c) 2020 Eric Lendvai MIT License
+//Copyright (c) 2021 Eric Lendvai, MIT License
 
 #include "fileio.ch"
 #include "dbinfo.ch"
@@ -19,7 +19,7 @@ return 1.3
 //=================================================================================================================
 //The VFP_ScanStack is to be used in conjuntion with the "#command SCAN" and "#command ENDSCAN"
 function VFP_ScanStack(par_action)    //action = "push" "pop" "scan" , "clear" (empty the entire stack)
-local xResult := nil
+local l_xResult := nil
 static iTop   := 0
 static aStack := {}     //Will hold an array [WorkArea,.t. if first loop]
 
@@ -32,7 +32,7 @@ switch par_action
             ASize( aStack, iTop )
         endif
         aStack[iTop] := {select(),.t.} // Record the current work area and flag to know during "scan" calls if they are going to be the initial "locate" or should be "continue"
-        xResult := nil
+        l_xResult := nil
         exit
     case "pop"
         iTop--
@@ -44,42 +44,42 @@ switch par_action
         exit
     otherwise
         select (aStack[iTop,1])
-        xResult := aStack[iTop,2]
+        l_xResult := aStack[iTop,2]
         aStack[iTop,2] := .f.
         exit
 endswitch
 
-return xResult
+return l_xResult
 //=================================================================================================================
 function VFP_StrToFile(par_cExpression,par_cFileName,par_lAdditive)   //Partial implementation of VFP9's strtran(). The 3rd parameter only supports a logical
 
-local lAdditive
-local nBytesWritten := 0
-local nFileHandle
+local l_lAdditive
+local l_nBytesWritten := 0
+local l_nFileHandle
 
-lAdditive := hb_defaultValue(par_lAdditive,.f.)
+l_lAdditive := hb_defaultValue(par_lAdditive,.f.)
 
 if hb_FileExists(par_cFileName)
-    if lAdditive
-        nFileHandle := FOpen(par_cFileName,FO_WRITE)
-        FSeek(nFileHandle,0,FS_END)  // go to the end of file
+    if l_lAdditive
+        l_nFileHandle := FOpen(par_cFileName,FO_WRITE)
+        FSeek(l_nFileHandle,0,FS_END)  // go to the end of file
     else
         if ferase(par_cFileName) == 0
-            nFileHandle := FCreate(par_cFileName)
+            l_nFileHandle := FCreate(par_cFileName)
         else
-            nFileHandle := -1
+            l_nFileHandle := -1
         endif
     endif
 else
-    nFileHandle := FCreate(par_cFileName)
+    l_nFileHandle := FCreate(par_cFileName)
 endif
 
-if nFileHandle >= 0
-    nBytesWritten := fwrite(nFileHandle,par_cExpression)
-    fclose(nFileHandle)
+if l_nFileHandle >= 0
+    l_nBytesWritten := fwrite(l_nFileHandle,par_cExpression)
+    fclose(l_nFileHandle)
 endif
 
-return nBytesWritten
+return l_nBytesWritten
 //=================================================================================================================
 function VFP_dbf(par_xalias)
 
@@ -95,45 +95,45 @@ hb_vfp_SendToDebugView("Table File Handle",(par_xalias)->(DbInfo(DBI_FILEHANDLE)
 return (par_xalias)->(DbInfo(DBI_FULLPATH))   //Does not include the fullpath!
 //=================================================================================================================
 //=================================================================================================================
-function hb_vfp_SendToDebugView(cStep,xValue)
-    local cTypeOfxValue
-    local cValue := "Unknown Value"
-    
-    cTypeOfxValue := ValType(xValue)
-    
-    do case
-    case pcount() < 2
-        cValue := ""
-    case cTypeOfxValue $ "AH" // Array or Hash
-        cValue := hb_ValToExp(xValue)
-    case cTypeOfxValue == "B" // Block
-        //Not coded yet
-    case cTypeOfxValue == "C" // Character (string)
-        cValue := xValue
-        //Not coded yet
-    case cTypeOfxValue == "D" // Date
-        cValue := DTOC(xValue)
-    case cTypeOfxValue == "L" // Logical
-        cValue := IIF(xValue,"True","False")
-    case cTypeOfxValue == "M" // Memo
-        //Not coded yet
-    case cTypeOfxValue == "N" // Numeric
-        cValue := alltrim(str(xValue))
-    case cTypeOfxValue == "O" // Object
-        //Not coded yet
-    case cTypeOfxValue == "P" // Pointer
-        //Not coded yet
-    case cTypeOfxValue == "S" // Symbol
-        //Not coded yet
-    case cTypeOfxValue == "U" // NIL
-        cValue := "Null"
-    endcase
-    
-    if empty(cValue)
-        hb_vfp_OutputDebugString("[Harbour] VFP "+cStep)
-    else
-        hb_vfp_OutputDebugString("[Harbour] VFP "+cStep+" - "+cValue)
-    endif
-    
+function hb_vfp_SendToDebugView(par_cStep,par_xValue)
+local l_cTypeOfxValue
+local l_cValue := "Unknown Value"
+
+l_cTypeOfxValue := ValType(par_xValue)
+
+do case
+case pcount() < 2
+    l_cValue := ""
+case l_cTypeOfxValue $ "AH" // Array or Hash
+    l_cValue := hb_ValToExp(par_xValue)
+case l_cTypeOfxValue == "B" // Block
+    //Not coded yet
+case l_cTypeOfxValue == "C" // Character (string)
+    l_cValue := par_xValue
+    //Not coded yet
+case l_cTypeOfxValue == "D" // Date
+    l_cValue := DTOC(par_xValue)
+case l_cTypeOfxValue == "L" // Logical
+    l_cValue := IIF(par_xValue,"True","False")
+case l_cTypeOfxValue == "M" // Memo
+    //Not coded yet
+case l_cTypeOfxValue == "N" // Numeric
+    l_cValue := alltrim(str(par_xValue))
+case l_cTypeOfxValue == "O" // Object
+    //Not coded yet
+case l_cTypeOfxValue == "P" // Pointer
+    //Not coded yet
+case l_cTypeOfxValue == "S" // Symbol
+    //Not coded yet
+case l_cTypeOfxValue == "U" // NIL
+    l_cValue := "Null"
+endcase
+
+if empty(l_cValue)
+    hb_vfp_OutputDebugString("[Harbour] VFP "+par_cStep)
+else
+    hb_vfp_OutputDebugString("[Harbour] VFP "+par_cStep+" - "+l_cValue)
+endif
+
 return .T.
 //=================================================================================================================

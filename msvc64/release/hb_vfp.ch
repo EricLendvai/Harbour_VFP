@@ -1,4 +1,4 @@
-//Copyright (c) 2020 Eric Lendvai MIT License
+//Copyright (c) 2021 Eric Lendvai MIT License
 
 #ifndef HB_VFP_CH_
 #define HB_VFP_CH_
@@ -98,6 +98,7 @@
 
 #command ENDSCAN => ENDDO;VFP_ScanStack("pop")
 
+//See https://github.com/dmajkic/harbour-core/blob/master/doc/pragma.txt
 #xcommand TEXT TO VAR <var> => #pragma __stream|<var>:=%s
 #xcommand ENDTEXT => #pragma __endtext
 

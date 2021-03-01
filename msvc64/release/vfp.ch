@@ -38,6 +38,9 @@
 
 #xtranslate used(<cAlias>) => ((select(cAlias)>0))
 
+#xtranslate inlist(<x,...>) => vfp_inlist(<x>)
+#xtranslate between(<x>,<a>,<b>) => vfp_between(<x>,<a>,<b>)
+
 //A common shortcut for end of line
 
 #define CRLF chr(13)+chr(10)

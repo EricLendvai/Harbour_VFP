@@ -1,4 +1,4 @@
-//Copyright (c) 2020 Eric Lendvai MIT License
+//Copyright (c) 2020 Eric Lendvai, MIT License
 
 // #include <stdlib.h>
 
@@ -11,7 +11,7 @@
 HB_FUNC( HB_VFP_OUTPUTDEBUGSTRING )   // For Windows Only
 {
 #ifdef _WIN32
-	OutputDebugString( hb_parc(1) );
+    OutputDebugString( hb_parc(1) );
 #endif
 }
 

@@ -27,4 +27,10 @@ hb_vfp_c.c
 vfp_strtran.c
 vfp_StrReplace.c
 
+vfp_from_harbour_foxpro_contrib.c
+
+hb_extra.c
+
+el_AUnpack.c
+
 debugger.hbm
