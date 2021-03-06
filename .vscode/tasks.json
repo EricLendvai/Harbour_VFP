@@ -4,16 +4,18 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "CompileRelease",
+            "label": "CompileDebug",
             "type": "shell",
             "command": "${workspaceFolder}\\BuildLIB.bat",
             "options": {
                 "cwd": "${workspaceFolder}",
                 "env": {
                     "LIBName":"hb_vfp",
-                    "BuildMode":"release",
-                    "HB_COMPILER":"${input:CCompiler}"
-                }
+                    "BuildMode":"debug",
+                    // "HB_COMPILER":"${input:CCompiler}"
+                    "HB_COMPILER":"mingw64"
+                },
+                "statusbar": {"label" : "<Compile Debug>","hide" : false}
             },
             "presentation": {
                 "echo": true,
@@ -25,17 +27,17 @@
             }
         },
         {
-            "label": "CompileDebug",
+            "label": "CompileRelease",
             "type": "shell",
             "command": "${workspaceFolder}\\BuildLIB.bat",
             "options": {
                 "cwd": "${workspaceFolder}",
                 "env": {
                     "LIBName":"hb_vfp",
-                    "BuildMode":"debug",
-					// "HB_COMPILER":"${input:CCompiler}"
-					"HB_COMPILER":"mingw64"
-                }
+                    "BuildMode":"release",
+                    "HB_COMPILER":"${input:CCompiler}"
+                },
+                "statusbar": {"label" : "<Compile Release>","hide" : false}
             },
             "presentation": {
                 "echo": true,
@@ -45,6 +47,17 @@
                 "showReuseMessage": false,
                 "clear": true
             }
+        },
+        {
+            "label": "DelAllPPO",
+            "type": "shell",
+            "command": "del *.ppo",
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "statusbar": {"label" : "<Del All PPO>","hide" : false}
+            },
+            "presentation": {"reveal": "never"}
         }
     ],
     "inputs": [

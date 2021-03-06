@@ -1,6 +1,6 @@
 /*
- * Harbour 3.2.0dev (r1901151150)
- * Microsoft Visual C++ 19.23.28106 (64-bit)
+ * Harbour 3.2.0dev (r2011030937)
+ * Microsoft Visual C 19.26.28806 (64-bit)
  * Generated C source from "SetupTables.prg"
  */
 

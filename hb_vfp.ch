@@ -117,4 +117,3 @@
 #xcommand DEFAULT <v1> := <x1> [, <vn> := <xn> ] => hb_default( @<v1>, <x1> ) [; hb_default( @<vn>, <xn> ) ]
 
 #endif /* HB_VFP_CH_ */
-

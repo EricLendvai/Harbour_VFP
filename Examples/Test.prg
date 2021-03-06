@@ -9,6 +9,30 @@ request HB_CODEPAGE_EN
 //=================================================================================================================
 Function Main()
 
+local cVal1 := "x"
+local cVal2 := "y"
+local cVal3 := "z"
+local cVal4 := {-1}
+
+?el_AUnpack({"Hello1",25,"World1",{41,2,1}},,@cVal2,@cVal3,@cVal4)
+
+?"cVal1",cVal1
+?"cVal2",cVal2
+?"cVal3",cVal3
+?"cVal4[1]",cVal4[1],cVal4[2],cVal4[3]
+
+cVal1 := NIL
+cVal2 := NIL
+?el_AUnpack(ReturnArray(),@cVal1,@cVal2)
+
+//AltD()
+
+// ?hb_datetime()
+// ?el_inlist(-1,0,3,2,1)
+// ?vfp_between(2,1,3)
+// ?vfp_between(2,3,7)
+// return nil
+
 hb_cdpSelect("EN")
 set delete on
 UpdateSchema()
@@ -196,4 +220,7 @@ endif
 (select("item"))->(dbCloseArea())
 
 return nil
+//=================================================================================================================
+static function ReturnArray()
+return {"","Hello"}
 //=================================================================================================================
