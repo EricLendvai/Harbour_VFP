@@ -19,7 +19,7 @@
             "postDebugTask": "",
             "workingDir": "${workspaceFolder}\\",
             "sourcePaths": [
-                "R:\\Harbour_ORM\\ORM\\",
+                "C:\\Harbour_ORM\\ORM\\",
                 "${workspaceFolder}\\"
             ]
         }
