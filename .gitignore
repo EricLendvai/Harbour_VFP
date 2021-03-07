@@ -11,3 +11,4 @@
 *.NotInGit
 Thumbs.db
 *.log
+*_rnd.*
