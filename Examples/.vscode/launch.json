@@ -17,7 +17,7 @@
             "workingDir": "${workspaceFolder}\\",
             "sourcePaths": [
                 "${workspaceFolder}\\",
-                "C:\\Harbour_VFP\\"
+                "R:\\Harbour_VFP\\"
             ]
         }
     ]

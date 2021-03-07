@@ -25,7 +25,7 @@ cVal1 := NIL
 cVal2 := NIL
 ?el_AUnpack(ReturnArray(),@cVal1,@cVal2)
 
-//AltD()
+// AltD()
 
 // ?hb_datetime()
 // ?el_inlist(-1,0,3,2,1)
