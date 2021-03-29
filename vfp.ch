@@ -98,6 +98,8 @@
 #translate  this.    => Self:
 #xtranslate .null.   => NIL
 
+#xtranslate NULL   => NIL
+#xtranslate ISNULL( <x> )    => hb_isnil( <x> )
 
 #command SKIP [<npos>] IN <workarea>   => (<workarea>)->( dbSkip( <npos> ) )
 #command UNLOCK IN <workarea>          => (<workarea>)->( dbUnlock() )

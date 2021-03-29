@@ -110,6 +110,9 @@
 #translate  this.    => Self:
 #xtranslate .null.   => NIL
 
+#xtranslate NULL   => NIL
+#xtranslate ISNULL( <x> )    => hb_isnil( <x> )
+
 #command CD <(path)> => hb_cwd(<(path)>)
 
 //https://groups.google.com/forum/#!topic/harbour-devel/FfZhqda6x1E
@@ -117,4 +120,3 @@
 #xcommand DEFAULT <v1> := <x1> [, <vn> := <xn> ] => hb_default( @<v1>, <x1> ) [; hb_default( @<vn>, <xn> ) ]
 
 #endif /* HB_VFP_CH_ */
-
