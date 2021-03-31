@@ -25,7 +25,7 @@ hb_vfp_c.c
 
 #The following 2 files will be merged in live Harbour later probably, or at least their changes
 vfp_strtran.c
-vfp_StrReplace.c
+vfp_strreplace.c
 
 vfp_from_harbour_foxpro_contrib.c
 

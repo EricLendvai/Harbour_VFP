@@ -48,7 +48,7 @@
  */
 
 #include <stdlib.h>
-#include <windows.h>
+// #include <windows.h>
 
 #include "hbapi.h"
 #include "hbapiitm.h"
