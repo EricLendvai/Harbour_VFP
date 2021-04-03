@@ -26,7 +26,7 @@
             "options": {
                 "cwd": "${workspaceFolder}",
                 "env": {
-                    "HB_VFP_ROOT":"r:\\Harbour_vfp",
+                    "HB_VFP_ROOT":"C:\\Harbour_vfp",
                     "EXEName":"Test",
                     "BuildMode":"debug",
                     // "HB_COMPILER":"${input:CCompiler}"
@@ -51,7 +51,7 @@
             "options": {
                 "cwd": "${workspaceFolder}",
                 "env": {
-                    "HB_VFP_ROOT":"r:\\Harbour_vfp",
+                    "HB_VFP_ROOT":"C:\\Harbour_vfp",
                     "EXEName":"Test",
                     "BuildMode":"release",
                     "RunAfterCompile":"yes",
@@ -75,7 +75,7 @@
             "options": {
                 "cwd": "${workspaceFolder}",
                 "env": {
-                    "HB_VFP_ROOT":"r:\\Harbour_vfp",
+                    "HB_VFP_ROOT":"C:\\Harbour_vfp",
                     "EXEName":"Test",
                     "BuildMode":"release",
                     "RunAfterCompile":"no",

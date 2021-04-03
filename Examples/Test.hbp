@@ -1,7 +1,7 @@
 -hbexe
 
 #To enabled progressing recompilation uncomment the following line
--inc
+#-inc
 
 #used for VSCODE debugger
 -gtcgi
