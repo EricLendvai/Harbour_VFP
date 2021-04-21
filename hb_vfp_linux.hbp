@@ -1,0 +1,36 @@
+-hblib
+
+#To enabled progressing recompilation uncomment the following line
+#-inc
+
+-workdir=${HB_COMPILER}/${BuildMode}/hbmk2/
+
+-o${HB_COMPILER}/${BuildMode}/hb_vfp
+
+#The following settings are done via the BuildLIB.bat
+#-w3 -es2
+
+#To generate non pcode source code
+-gc3
+
+#To generate an hbx file that could be consumed by client exes and other libs
+-hbx=hb_vfp_linux.hbx
+
+#Example of how to consume this library
+#$hb_vfp_linux.hbx
+
+hb_vfp.prg
+
+hb_vfp_c.c
+
+#The following 2 files will be merged in live Harbour later probably, or at least their changes
+vfp_strtran.c
+vfp_strreplace.c
+
+vfp_from_harbour_foxpro_contrib.c
+
+hb_extra.c
+
+el_AUnpack.c
+
+debugger.hbm

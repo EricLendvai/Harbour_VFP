@@ -10,14 +10,14 @@
  *          Regenerate using hbmk2 '-hbx=' option.
  */
 
-#ifndef __HBEXTERN_CH__HB_VFP__
-#define __HBEXTERN_CH__HB_VFP__
+#ifndef __HBEXTERN_CH__HB_VFP_WINDOWS__
+#define __HBEXTERN_CH__HB_VFP_WINDOWS__
 
-#if defined( __HBEXTREQ__ ) .OR. defined( __HBEXTERN__HB_VFP__ANNOUNCE )
-   ANNOUNCE __HBEXTERN__HB_VFP__
+#if defined( __HBEXTREQ__ ) .OR. defined( __HBEXTERN__HB_VFP_WINDOWS__ANNOUNCE )
+   ANNOUNCE __HBEXTERN__HB_VFP_WINDOWS__
 #endif
 
-#if defined( __HBEXTREQ__ ) .OR. defined( __HBEXTERN__HB_VFP__REQUEST )
+#if defined( __HBEXTREQ__ ) .OR. defined( __HBEXTERN__HB_VFP_WINDOWS__REQUEST )
    #command DYNAMIC <fncs,...> => EXTERNAL <fncs>
 #endif
 
@@ -35,7 +35,7 @@ DYNAMIC VFP_STRREPLACE
 DYNAMIC VFP_STRTOFILE
 DYNAMIC VFP_STRTRAN
 
-#if defined( __HBEXTREQ__ ) .OR. defined( __HBEXTERN__HB_VFP__REQUEST )
+#if defined( __HBEXTREQ__ ) .OR. defined( __HBEXTERN__HB_VFP_WINDOWS__REQUEST )
    #uncommand DYNAMIC <fncs,...> => EXTERNAL <fncs>
 #endif
 

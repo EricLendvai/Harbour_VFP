@@ -6,23 +6,6 @@
     //Will add a unit testing module later.
     "version": "0.2.0",
     "configurations": [
-/*
-        {
-            "type": "harbour-dbg",
-            "request": "launch",
-            "name": "Launch ORM Example MariaDB_CRUD",
-            "program": "${workspaceFolder}\\mingw64\\debug\\MariaDB_CRUD.exe",
-            "stopOnEntry": false,
-            //In the followin "integrated" means the TERMINAL. Use "none" to use the DEBUG CONSOLE instead.
-            "terminalType": "integrated",
-            "preLaunchTask": "CompileDebug",
-            "postDebugTask": "",
-            "workingDir": "${workspaceFolder}\\",
-            "sourcePaths": [
-                "C:\\Harbour_ORM\\ORM\\",
-                "${workspaceFolder}\\"
-            ]
-        }
-*/
+
     ]
 }

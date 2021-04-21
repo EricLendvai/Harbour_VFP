@@ -5,7 +5,7 @@
 
 -workdir=${HB_COMPILER}\${BuildMode}\hbmk2\
 
--o${HB_COMPILER}\${BuildMode}\${hb_name}
+-o${HB_COMPILER}\${BuildMode}\hb_vfp
 
 #The following settings are done via the BuildLIB.bat
 #-w3 -es2
@@ -14,10 +14,10 @@
 -gc3
 
 #To generate an hbx file that could be consumed by client exes and other libs
--hbx=${hb_name}.hbx
+-hbx=hb_vfp_windows.hbx
 
 #Example of how to consume this library
-#${hb_name}.hbx
+#$hb_vfp_windows.hbx
 
 hb_vfp.prg
 

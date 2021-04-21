@@ -8,8 +8,8 @@ if %LIBName%. == . goto MissingEnvironmentVariables
 if %BuildMode%. == . goto MissingEnvironmentVariables
 if %HB_COMPILER%. ==. goto MissingEnvironmentVariables
 
-if not exist %LIBName%.hbp (
-	echo Invalid Workspace Folder. Missing file %LIBName%.hbp
+if not exist %LIBName%_windows.hbp (
+	echo Invalid Workspace Folder. Missing file %LIBName%_windows.hbp
 	goto End
 )
 
@@ -51,16 +51,16 @@ rem del %HB_COMPILER%\%BuildMode%\*.lib 2>nul
 ::  -es2      = process warning as errors
 ::  -p        = Leave generated ppo files
 
-:: since this is a library will also fail on warnings.
+copy *.ch %HB_COMPILER%\%BuildMode%\
+del %HB_COMPILER%\%BuildMode%\*.ppo
 
+:: since this is a library will also fail on warnings.
 if %BuildMode% == debug (
 	copy debugger_on.hbm debugger.hbm
-    hbmk2 %LIBName%.hbp -b -p -w3 -es2
+    hbmk2 %LIBName%_windows.hbp -b -p -w3 -es2
 ) else (
 	copy debugger_off.hbm debugger.hbm
-    copy *.ch %HB_COMPILER%\%BuildMode%\
-    del %HB_COMPILER%\%BuildMode%\*.ppo
-	hbmk2 %LIBName%.hbp -w3 -es2
+	hbmk2 %LIBName%_windows.hbp -w3 -es2
 )
 
 echo Current time is %mydate% %mytime%
@@ -74,8 +74,8 @@ if %SUCCESS% == F (
 ) else (
 	if errorlevel 0 (
 rem     since debug and release have different .hbx file, localize it
-        copy %LIBName%.hbx %HB_COMPILER%\%BuildMode%\ >nul
-        del %LIBName%.hbx >nul
+        copy %LIBName%_windows.hbx %HB_COMPILER%\%BuildMode%\ >nul
+        del %LIBName%_windows.hbx >nul
         
 		echo.
 		echo No Errors
