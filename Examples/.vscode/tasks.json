@@ -171,7 +171,7 @@
             "label": "RunReleaseMingw64",
             "windows":{
                 "type": "shell",
-                "command": "${workspaceFolder}\\mingw64\\release\\Test.exe",
+                "command": "${workspaceFolder}\\build\\win64\\mingw64\\release\\Test.exe",
                 "options": {
                     "statusbar": {"label" : "<Run Release Mingw64>","hide" : false}
                 },
@@ -179,7 +179,7 @@
             },
             "linux":{
                 "type": "shell",
-                "command": "${workspaceFolder}/gcc/release/Test.exe",
+                "command": "${workspaceFolder}/build/lin64/gcc/release/Test.exe",
                 "options": {
                     "statusbar": {"label" : "<Run Release gcc>","hide" : false}
                 },
@@ -190,7 +190,7 @@
             "label": "Run Release msvc64",
             "windows":{
                 "type": "shell",
-                "command": "${workspaceFolder}\\msvc64\\release\\Test.exe",
+                "command": "${workspaceFolder}\\build\\win64\\msvc64\\release\\Test.exe",
                 "options": {
                     "statusbar": {"label" : "<Run Release msvc64>","hide" : false}
                 },
@@ -198,7 +198,7 @@
             },
             "linux":{
                 "type": "shell",
-                "command": "${workspaceFolder}/gcc/release/Test.exe",
+                "command": "${workspaceFolder}/build/lin64/gcc/release/Test.exe",
                 "options": {
                     "statusbar": {"label" : "<Run Release gcc>","hide" : true}
                 },

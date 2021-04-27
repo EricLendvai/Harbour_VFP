@@ -3,9 +3,9 @@
 #To enabled progressing recompilation uncomment the following line
 #-inc
 
--workdir=${HB_COMPILER}\${BuildMode}\hbmk2\
+-workdir=build\win64\${HB_COMPILER}\${BuildMode}\hbmk2\
 
--o${HB_COMPILER}\${BuildMode}\hb_vfp
+-obuild\win64\${HB_COMPILER}\${BuildMode}\hb_vfp
 
 #The following settings are done via the BuildLIB.bat
 #-w3 -es2

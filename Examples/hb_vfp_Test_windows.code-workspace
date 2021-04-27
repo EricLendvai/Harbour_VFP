@@ -6,7 +6,7 @@
     ],
     "settings": {
         "files.autoSave": "onFocusChange",
-        "harbour.compilerExecutable": "C:\\Harbour\\bin\\win\\mingw64\\harbour.exe",
+        "harbour.compilerExecutable": "C:\\Harbour\\build\\win\\mingw64\\harbour.exe",
         "harbour.extraOptions": "-iC:\\Harbour\\include",
         "harbour.extraIncludePaths":["C:\\Harbour\\include\\",
                                       "R:\\Harbour_VFP\\"],
