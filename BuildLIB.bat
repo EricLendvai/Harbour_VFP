@@ -59,10 +59,10 @@ rem del build\win64\%HB_COMPILER%\%BuildMode%\*.ppo
 :: since this is a library will also fail on warnings.
 if %BuildMode% == debug (
 	copy debugger_on.hbm debugger.hbm
-    hbmk2 %LIBName%_windows.hbp -b -p -w3 -es2 -shared
+    hbmk2 %LIBName%_windows.hbp -b -p -w3 -es2 -shared -dDEBUGVIEW
 ) else (
 	copy debugger_off.hbm debugger.hbm
-	hbmk2 %LIBName%_windows.hbp -w3 -es2 -fullstatic
+	hbmk2 %LIBName%_windows.hbp -w3 -es2 -fullstatic -dDEBUGVIEW
 )
 
 echo Current time is %mydate% %mytime%

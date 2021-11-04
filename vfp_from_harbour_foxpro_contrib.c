@@ -4,6 +4,7 @@
 /*
  * FoxPro compatible functions BETWEEN(), INLIST()
  *
+ * Copyright 2021 Eric Lendvai Modifed __FOX_SEEK to Create VFP_SEEK
  * Copyright 2016 Przemyslaw Czerpak <druzus / at / priv.onet.pl>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -53,6 +54,14 @@
 #include "hbapi.h"
 #include "hbapiitm.h"
 
+
+//Following for VFP_SEEK
+#include "hbapirdd.h"
+#include "hbapierr.h"
+//#include "hbset.h
+
+
+
 // static char cDebugStringBuffer[20000];
 
 HB_FUNC( VFP_BETWEEN )
@@ -92,3 +101,66 @@ HB_FUNC( VFP_INLIST )
    hb_retl( fResult );
 }
 
+static AREAP s_foxAreaPointer( int iParam )
+{
+   if( HB_ISNIL( iParam ) )
+      return ( AREAP ) hb_rddGetCurrentWorkAreaPointer();
+   else
+   {
+      const char * szAlias = hb_parc( iParam );
+      int iArea;
+
+      if( szAlias )
+         hb_rddGetAliasNumber( szAlias, &iArea );
+      else
+         iArea = hb_parni( iParam );
+
+      return ( AREAP ) hb_rddGetWorkAreaPointer( iArea );
+   }
+}
+
+// The VFP_SEEK is a modified version of __FOX_SEEK VFP does not handle SoftSeek and FindLast, and the order of parameter is different.
+// From VFP Help File about the  SEEK(eExpression [, nWorkArea | cTableAlias   [, nIndexNumber | cIDXIndexFileName | cTagName]])  function.
+//  Currently all 3 parameters are required. But for the last parameter, will only support cTagName
+
+HB_FUNC( VFP_SEEK )
+{
+   AREAP pArea = s_foxAreaPointer( 2 );
+
+   if( pArea )
+   {
+      if( ! HB_ISNIL( 1 ) )
+      {
+         PHB_ITEM pKey = hb_param( 1, HB_IT_ANY );
+         HB_BOOL fSoftSeek = 0; //HB_ISLOG( 2 ) ? ( HB_BOOL ) hb_parl( 2 ) : hb_setGetSoftSeek();
+         HB_BOOL fFindLast = 0, fFound = HB_FALSE; //hb_parl( 3 );
+         PHB_ITEM pTag = hb_param( 3, HB_IT_NUMERIC | HB_IT_STRING );
+         HB_ERRCODE errCode = HB_SUCCESS;
+
+         if( pTag )
+         {
+            DBORDERINFO pInfo;
+            memset( &pInfo, 0, sizeof( pInfo ) );
+            pInfo.itmOrder = pTag;
+            pInfo.itmResult = hb_itemNew( NULL );
+            errCode = SELF_ORDLSTFOCUS( pArea, &pInfo );
+            hb_itemRelease( pInfo.itmResult );
+         }
+
+         if( errCode == HB_SUCCESS )
+         {
+            if( SELF_SEEK( pArea, fSoftSeek, pKey, fFindLast ) == HB_SUCCESS )
+            {
+               if( SELF_FOUND( pArea, &fFound ) != HB_SUCCESS )
+                  fFound = HB_FALSE;
+            }
+         }
+
+         hb_retl( fFound );
+      }
+      else
+         hb_errRT_DBCMD( EG_ARG, EDBCMD_SEEK_BADPARAMETER, NULL, HB_ERR_FUNCNAME );
+   }
+   else
+      hb_errRT_DBCMD( EG_NOTABLE, EDBCMD_NOTABLE, NULL, HB_ERR_FUNCNAME );
+}
