@@ -31,10 +31,10 @@
 #xcommand endwhile => END
 
 //Made more than one #translate to assist VSCODE. #translate and #xtranslate are case insensitive
-#translate Allt( <x> )    => alltrim( <x> )
-#translate allt( <x> )    => alltrim( <x> )
+#translate Allt(<x>)    => alltrim(<x>)
+#translate allt(<x>)    => alltrim(<x>)
 
-#translate Trans( <x> )   => alltrim( str(<x>,10) )
+#translate Trans(<x>)   => alltrim(hb_CStr(<x>))
 
 //enhances the used() harbour function to support a parameter.
 #xtranslate used( <cAlias> ) => ((select( <cAlias> ) > 0))
