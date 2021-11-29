@@ -31,10 +31,10 @@
 #xcommand endwhile => END
 
 //Made more than one #translate to assist VSCODE. #translate and #xtranslate are case insensitive
-#translate Allt(<x>)    => alltrim(<x>)
-#translate allt(<x>)    => alltrim(<x>)
+#translate Allt(<x>) => alltrim(<x>)
+#translate allt(<x>) => alltrim(<x>)
 
-#translate Trans(<x>)   => alltrim(hb_CStr(<x>))
+#translate Trans(<x>) => alltrim(hb_CStr(<x>))
 
 //enhances the used() harbour function to support a parameter.
 #xtranslate used( <cAlias> ) => ((select( <cAlias> ) > 0))
@@ -107,16 +107,22 @@
 //#xtranslate .<!PEM!> => :<PEM>
 
 
-#translate  this.    => Self:
-#xtranslate .null.   => NIL
 
-#xtranslate NULL   => NIL
-#xtranslate ISNULL( <x> )    => hb_isnil( <x> )
+//The following are also defined Since they do not exists in Harbour will behave as in vfp.ch
+
+#translate  this. => Self:
+#xtranslate .null. => NIL
+
+#xtranslate NULL => NIL
+#xtranslate ISNULL(<x>) => hb_isnil(<x>)
+
+#xtranslate NVL(<v1>,<v2>) => vfp_nvl(<v1>,<v2>)
+
 
 #command CD <(path)> => hb_cwd(<(path)>)
 
 //https://groups.google.com/forum/#!topic/harbour-devel/FfZhqda6x1E
-#xcommand DEFAULT <v1> TO <x1> [, <vn> TO <xn> ] => hb_default( @<v1>, <x1> ) [; hb_default( @<vn>, <xn> ) ]
-#xcommand DEFAULT <v1> := <x1> [, <vn> := <xn> ] => hb_default( @<v1>, <x1> ) [; hb_default( @<vn>, <xn> ) ]
+#xcommand DEFAULT <v1> TO <x1> [, <vn> TO <xn> ] => hb_default(@<v1>,<x1>) [; hb_default( @<vn>, <xn> ) ]
+#xcommand DEFAULT <v1> := <x1> [, <vn> := <xn> ] => hb_default(@<v1>,<x1>) [; hb_default( @<vn>, <xn> ) ]
 
 #endif /* HB_VFP_CH_ */

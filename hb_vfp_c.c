@@ -44,3 +44,15 @@ HB_FUNC( VFP_DATETIME )
 }
 
 //=================================================================================================================
+HB_FUNC( VFP_NVL )
+{
+    PHB_ITEM pParam1 = hb_param( 1, HB_IT_ANY );
+    PHB_ITEM pParam2 = hb_param( 2, HB_IT_ANY );
+    
+    if(!HB_IS_NIL(pParam1)) {
+        hb_itemReturn( pParam1 );
+    } else {
+        hb_itemReturn( pParam2 );
+    }
+}
+//=================================================================================================================

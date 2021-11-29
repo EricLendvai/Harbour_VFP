@@ -95,17 +95,19 @@
 
 //The problem is that in VFP    <tablename>.<fieldname>      <objectname>.<property>         <objectname>.<method>()
 //#xtranslate .<!PEM!> => :<PEM>
-#translate  this.    => Self:
-#xtranslate .null.   => NIL
+#translate  this. => Self:
+#xtranslate .null. => NIL
 
-#xtranslate NULL   => NIL
-#xtranslate ISNULL( <x> )    => hb_isnil( <x> )
+#xtranslate NULL => NIL
+#xtranslate ISNULL(<x>) => hb_isnil(<x>)
+#xtranslate NVL(<v1>,<v2>) => vfp_nvl(<v1>,<v2>)
 
-#command SKIP [<npos>] IN <workarea>   => (<workarea>)->( dbSkip( <npos> ) )
-#command UNLOCK IN <workarea>          => (<workarea>)->( dbUnlock() )
-#command GO TOP IN <workarea>          => (<workarea>)->( dbGoTop() )
-#command GO BOTTOM IN <workarea>       => (<workarea>)->( dbGoBottom() )
-#command GOTO <nRecno> IN <workarea>   => (<workarea>)->( dbGoto( <nRecno> ) )
+
+#command SKIP [<npos>] IN <workarea>   => (<workarea>)->(dbSkip(<npos>))
+#command UNLOCK IN <workarea>          => (<workarea>)->(dbUnlock())
+#command GO TOP IN <workarea>          => (<workarea>)->(dbGoTop())
+#command GO BOTTOM IN <workarea>       => (<workarea>)->(dbGoBottom())
+#command GOTO <nRecno> IN <workarea>   => (<workarea>)->(dbGoto(<nRecno>))
 
 
 #xcommand VarType(<varname>) => ValType(<varname>)
