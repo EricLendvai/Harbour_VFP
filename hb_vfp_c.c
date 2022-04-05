@@ -3,6 +3,7 @@
 // #include <stdlib.h>
 
 #include "hbapi.h"
+#include "hbdate.h"    // Needed for Mac support
 #include "hbapiitm.h"
 
 #ifdef _WIN32
