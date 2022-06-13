@@ -118,6 +118,9 @@
 
 #xtranslate NVL(<v1>,<v2>) => vfp_nvl(<v1>,<v2>)
 
+//The vfp_dbf() is actually case sensitive.
+#xtranslate vfp_dbf()         => DBINFO(DBI_FULLPATH)
+#xtranslate vfp_dbf(<xAlias>) => (<xAlias>)->(DBINFO(DBI_FULLPATH))
 
 #command CD <(path)> => hb_cwd(<(path)>)
 

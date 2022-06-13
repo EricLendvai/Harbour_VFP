@@ -41,6 +41,9 @@
 #xtranslate inlist(<x,...>) => vfp_inlist(<x>)
 #xtranslate between(<x>,<a>,<b>) => vfp_between(<x>,<a>,<b>)
 
+#xtranslate dbf()         => UPPER(DBINFO(DBI_FULLPATH))
+#xtranslate dbf(<xAlias>) => UPPER((<xAlias>)->(DBINFO(DBI_FULLPATH)))
+
 //A common shortcut for end of line
 
 #define CRLF chr(13)+chr(10)
