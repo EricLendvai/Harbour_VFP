@@ -1,0 +1,36 @@
+#To take advantage of Docker caching, we are using the same instructions as other .devcontainer/Dockerfile until the "RUN ldconfig"
+FROM ubuntu:22.04
+
+## for apt to be noninteractive
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN true
+
+RUN apt-get update && apt-get install -y apt-utils
+RUN apt-get install -y \
+        libfcgi-dev \
+        libapache2-mod-fcgid \
+        git \
+        build-essential \
+        unixodbc-dev \
+        apache2 \
+        libapache2-mod-fcgid \
+        libgpm2 \
+        gnupg \
+        wget \
+        psmisc \
+        libcurl4-openssl-dev
+
+
+# install harbour from src
+RUN mkdir /src
+WORKDIR /src
+RUN git clone --branch master https://github.com/harbour/core.git harbour
+WORKDIR /src/harbour
+ENV HB_WITH_CURL=/usr/include/x86_64-linux-gnu/
+# Will request the make app to use up to 8 core.
+RUN make -j 8 install
+
+#To fix symlinks
+RUN ldconfig
+
+#This project does not need any additional instruction. Harbour_VFP should always be built first since Harbour_ORM, Harbour_FastCGI and other are using this lib

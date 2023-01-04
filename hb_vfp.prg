@@ -1,4 +1,4 @@
-//Copyright (c) 2021 Eric Lendvai, MIT License
+//Copyright (c) 2023 Eric Lendvai, MIT License
 
 #include "fileio.ch"
 #include "dbinfo.ch"
@@ -15,7 +15,8 @@
 //=================================================================================================================
 function VFP_GetCompatibilityPackVersion()
 // altd()
-return 1.3
+// return 1.3
+return 3.2
 //=================================================================================================================
 //The VFP_ScanStack is to be used in conjuntion with the "#command SCAN" and "#command ENDSCAN"
 function VFP_ScanStack(par_action)    //action = "push" "pop" "scan" , "clear" (empty the entire stack)

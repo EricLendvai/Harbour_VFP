@@ -35,17 +35,35 @@
             }
         },
         {
+            "label": "RunDebug",
+            "command": "${command:workbench.action.debug.start}",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "statusbar": {"label" : "<Compile and Debug>","hide" : false}
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            }
+        },
+        {
             "label": "CompileDebug",
             "windows":{
                 "type": "shell",
-                "command": "${workspaceFolder}\\BuildLIB.bat",
+                "command": "${workspaceFolder}\\BuildEXE.bat",
                 "options": {
                     "cwd": "${workspaceFolder}",
                     "env": {
-                        "LIBName":"hb_vfp",
+                        "HB_VFP_ROOT":"C:\\Harbour_VFP",
+                        "EXEName":"Test",
                         "BuildMode":"debug",
-                        "HB_COMPILER":"${input:CCompiler}"
-                        // "HB_COMPILER":"mingw64"
+                        // "HB_COMPILER":"${input:CCompiler}"
+                        "RunAfterCompile":"no",
+                        "HB_COMPILER":"mingw64"
                     },
                     "statusbar": {"label" : "<Compile Debug>","hide" : false}
                 },
@@ -60,15 +78,66 @@
             },
             "linux":{
                 "type": "shell",
-                "command": "${workspaceFolder}/BuildLIB.sh",
+                "command": "${workspaceFolder}/BuildEXE.sh",
                 "options": {
                     "cwd": "${workspaceFolder}",
                     "env": {
-                        "LIBName":"hb_vfp",
+                        "HB_VFP_ROOT":"/src/Harbour_VFP",
+                        "EXEName":"Test",
                         "BuildMode":"debug",
+                        "RunAfterCompile":"no",
                         "HB_COMPILER":"gcc"
                     },
                     "statusbar": {"label" : "<Compile Debug>","hide" : false}
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared",
+                    "showReuseMessage": false,
+                    "clear": true
+                }
+            }
+        },
+        {
+            "label": "CompileAndRunRelease",
+            "windows":{
+                "type": "shell",
+                "command": "${workspaceFolder}\\BuildEXE.bat",
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "env": {
+                        "HB_VFP_ROOT":"C:\\Harbour_VFP",
+                        "EXEName":"Test",
+                        "BuildMode":"release",
+                        "RunAfterCompile":"yes",
+                        "HB_COMPILER":"${input:CCompiler}"
+                    },
+                    "statusbar": {"label" : "<Compile Release and Run>","hide" : false}
+                },
+                "presentation": {
+                    "echo": true,
+                    "reveal": "always",
+                    "focus": true,
+                    "panel": "shared",
+                    "showReuseMessage": false,
+                    "clear": true
+                }
+            },
+            "linux":{
+                "type": "shell",
+                "command": "${workspaceFolder}/BuildEXE.sh",
+                "options": {
+                    "cwd": "${workspaceFolder}",
+                    "env": {
+                        "HB_VFP_ROOT":"/src/Harbour_VFP",
+                        "EXEName":"Test",
+                        "BuildMode":"release",
+                        "RunAfterCompile":"yes",
+                        "HB_COMPILER":"gcc"
+                    },
+                    "statusbar": {"label" : "<Compile Release and Run>","hide" : false}
                 },
                 "presentation": {
                     "echo": true,
@@ -84,12 +153,14 @@
             "label": "CompileRelease",
             "windows":{
                 "type": "shell",
-                "command": "${workspaceFolder}\\BuildLIB.bat",
+                "command": "${workspaceFolder}\\BuildEXE.bat",
                 "options": {
                     "cwd": "${workspaceFolder}",
                     "env": {
-                        "LIBName":"hb_vfp",
+                        "HB_VFP_ROOT":"C:\\Harbour_VFP",
+                        "EXEName":"Test",
                         "BuildMode":"release",
+                        "RunAfterCompile":"no",
                         "HB_COMPILER":"${input:CCompiler}"
                     },
                     "statusbar": {"label" : "<Compile Release>","hide" : false}
@@ -105,12 +176,14 @@
             },
             "linux":{
                 "type": "shell",
-                "command": "${workspaceFolder}/BuildLIB.sh",
+                "command": "${workspaceFolder}/BuildEXE.sh",
                 "options": {
                     "cwd": "${workspaceFolder}",
                     "env": {
-                        "LIBName":"hb_vfp",
+                        "HB_VFP_ROOT":"/src/Harbour_VFP",
+                        "EXEName":"Test",
                         "BuildMode":"release",
+                        "RunAfterCompile":"no",
                         "HB_COMPILER":"gcc"
                     },
                     "statusbar": {"label" : "<Compile Release>","hide" : false}
@@ -126,24 +199,39 @@
             }
         },
         {
-            "label": "DelBuildCache",
+            "label": "RunReleaseMingw64",
             "windows":{
                 "type": "shell",
-                "command": "rd ${workspaceFolder}\\build\\win64\\ /Q /S",
-                "isBackground": true,
+                "command": "${workspaceFolder}\\build\\win64\\mingw64\\release\\Test.exe",
                 "options": {
-                    "cwd": "${workspaceFolder}",
-                    "statusbar": {"label" : "<Del Build Caches>","hide" : false}
+                    "statusbar": {"label" : "<Run Release Mingw64>","hide" : false}
                 },
                 "presentation": {"reveal": "never"}
             },
             "linux":{
                 "type": "shell",
-                "command": "rm -rf ${workspaceFolder}/build/lin64/",
-                "isBackground": true,
+                "command": "${workspaceFolder}/build/lin64/gcc/release/Test.exe",
                 "options": {
-                    "cwd": "${workspaceFolder}",
-                    "statusbar": {"label" : "<Del Build Caches>","hide" : false}
+                    "statusbar": {"label" : "<Run Release gcc>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            }
+        },
+        {
+            "label": "Run Release msvc64",
+            "windows":{
+                "type": "shell",
+                "command": "${workspaceFolder}\\build\\win64\\msvc64\\release\\Test.exe",
+                "options": {
+                    "statusbar": {"label" : "<Run Release msvc64>","hide" : false}
+                },
+                "presentation": {"reveal": "never"}
+            },
+            "linux":{
+                "type": "shell",
+                "command": "${workspaceFolder}/build/lin64/gcc/release/Test.exe",
+                "options": {
+                    "statusbar": {"label" : "<Run Release gcc>","hide" : true}
                 },
                 "presentation": {"reveal": "never"}
             }

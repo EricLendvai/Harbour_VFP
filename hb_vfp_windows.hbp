@@ -32,5 +32,3 @@ vfp_from_harbour_foxpro_contrib.c
 hb_extra.c
 
 el_AUnpack.c
-
-debugger.hbm

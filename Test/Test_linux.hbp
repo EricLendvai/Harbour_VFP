@@ -1,0 +1,29 @@
+-hbexe
+
+#To enabled progressing recompilation uncomment the following line
+#-inc
+
+#used for VSCODE debugger
+-gtcgi
+
+-trace
+
+-obuild/lin64/${HB_COMPILER}/${BuildMode}/${EXEName}.exe
+
+
+#To include the hb_vfp module, and even allow its debugging
+-incpath=${HB_VFP_ROOT}/
+#Update the Path where the HB_VFP package is installed
+-L${HB_VFP_ROOT}/build/lin64/${HB_COMPILER}/${BuildMode}
+-lhb_vfp
+#following will force linking of all hb_vfp modules
+${HB_VFP_ROOT}/build/lin64/${HB_COMPILER}/${BuildMode}/hb_vfp_linux.hbx
+
+
+-workdir=build/lin64/${HB_COMPILER}/${BuildMode}/hbmk2/
+
+#To also create a list of all the object files linked uncomment the following line
+#-map
+
+Test.prg
+SetupTables.prg

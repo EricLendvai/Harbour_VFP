@@ -1,7 +1,8 @@
-//Copyright (c) 2021 Eric Lendvai MIT License
+//Copyright (c) 2023 Eric Lendvai MIT License
 
-#ifndef HB_VFP_CH_
-#define HB_VFP_CH_
+#ifndef HB_VFP_BUILDVERSION
+#define HB_VFP_BUILDVERSION "3.2"
+
 
 //#include "hbclass.ch"
 
@@ -128,4 +129,4 @@
 #xcommand DEFAULT <v1> TO <x1> [, <vn> TO <xn> ] => hb_default(@<v1>,<x1>) [; hb_default( @<vn>, <xn> ) ]
 #xcommand DEFAULT <v1> := <x1> [, <vn> := <xn> ] => hb_default(@<v1>,<x1>) [; hb_default( @<vn>, <xn> ) ]
 
-#endif /* HB_VFP_CH_ */
+#endif /* HB_VFP_BUILDVERSION */

@@ -1,10 +1,10 @@
-//Copyright 2021 Eric Lendvai, MIT License unless specified otherwise
+//Copyright (c) 2023 Eric Lendvai, MIT License unless specified otherwise
 
 #include "hbapi.h"
 #include "hbapiitm.h"
 
 //Modified version of contrib\hbfoxpro\relfunc.c Copyright 2016 Przemyslaw Czerpak <druzus / at / priv.onet.pl>
-//Changes Copyright 2021 Eric Lendvai, MIT license.
+//Changes Copyright (c) 2023 Eric Lendvai, MIT license.
 HB_FUNC( EL_INLIST )
 {
    int iResult = 0;

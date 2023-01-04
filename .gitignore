@@ -12,3 +12,5 @@
 Thumbs.db
 *.log
 *_rnd.*
+build
+.lh

@@ -1,7 +1,7 @@
-//Copyright (c) 2022 Eric Lendvai MIT License
+//Copyright (c) 2023 Eric Lendvai MIT License
 
-#ifndef VFP_CH_
-#define VFP_CH_
+#ifndef HB_VFP_BUILDVERSION
+#define HB_VFP_BUILDVERSION "3.2"
 
 //#include "hbclass.ch"
 
@@ -123,5 +123,5 @@
 //_M_  Make strtran(...)  use the vfp_strtran(...)   not 
 #xtranslate strtran(<params,...>) => vfp_strtran(<params>)
 
-#endif /* VFP_CH_ */
+#endif /* HB_VFP_BUILDVERSION */
 

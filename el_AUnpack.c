@@ -1,4 +1,4 @@
-//Copyright 2021 Eric Lendvai, MIT License unless specified otherwise
+//Copyright (c) 2023 Eric Lendvai, MIT License unless specified otherwise
 
 #include "hbapi.h"
 #include "hbapiitm.h"

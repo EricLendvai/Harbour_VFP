@@ -19,17 +19,13 @@ else
 
         echo "HB_COMPILER = ${HB_COMPILER}"
 
-        mkdir "build" 2>/dev/null
-        mkdir "build/lin64" 2>/dev/null
-        mkdir "build/lin64/${HB_COMPILER}" 2>/dev/null
-        mkdir "build/lin64/${HB_COMPILER}/${BuildMode}" 2>/dev/null
-        mkdir "build/lin64/${HB_COMPILER}/${BuildMode}/hbmk2" 2>/dev/null
+        mkdir -p build/lin64/${HB_COMPILER}/${BuildMode}/hbmk2 2>/dev/null
 
         now=$(date +'%m/%d/%Y %H:%M:%S')
         echo local l_cBuildInfo := \"${HB_COMPILER} ${BuildMode} ${now}\">BuildInfo.txt
 
-        # rm "build/lin64/${HB_COMPILER}/${BuildMode}/lib${LIBName}.a" 2>/dev/null
-        rm "build/lin64/${HB_COMPILER}/${BuildMode}/*.*" 2>/dev/null
+        # Due to an issue in lubuntu had to remove double quotes.
+        rm build/lin64/${HB_COMPILER}/${BuildMode}/*.* 2>/dev/null
         
         if [ -f "build/lin64/${HB_COMPILER}/${BuildMode}/lib${LIBName}.a" ] ; then
             echo "Could not delete previous version of lib${LIBName}.a"
@@ -45,10 +41,8 @@ else
             # rm build/lin64/${HB_COMPILER}/${BuildMode}/*.ppo
             #since this is a library will also fail on warnings.
             if [ "${BuildMode}" == "debug" ] ; then
-                cp debugger_on.hbm debugger.hbm
-                hbmk2 "${LIBName}_linux.hbp" -b -p -w3 -es2 -shared
+                hbmk2 "${LIBName}_linux.hbp" "vscode_debugger.prg" -b -p -w3 -es2 -shared
             else
-                cp debugger_off.hbm debugger.hbm
                 hbmk2 "${LIBName}_linux.hbp" -w3 -es2 -fullstatic
             fi
 
@@ -57,8 +51,8 @@ else
                 echo "Failed To build lib${LIBName}.a"
             else
                 if [ $nHbmk2Status -eq 0 ]; then
-                    cp ${LIBName}_linux.hbx build/lin64/${HB_COMPILER}/${BuildMode}/ >nul
-                    rm ${LIBName}_linux.hbx >nul
+                    cp ${LIBName}_linux.hbx build/lin64/${HB_COMPILER}/${BuildMode}/ >/dev/null
+                    rm ${LIBName}_linux.hbx >/dev/null
 
                     echo ""
                     echo "No Errors"
