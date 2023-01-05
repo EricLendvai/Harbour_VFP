@@ -16,7 +16,7 @@
                 "program": "${workspaceFolder}\\build\\win64\\mingw64\\debug\\Test.exe",
                 "sourcePaths": [
                     "${workspaceFolder}",
-                    "R:\\Harbour_VFP\\"
+                    "C:\\Harbour_VFP\\"
                 ]
             },
             "linux":{
