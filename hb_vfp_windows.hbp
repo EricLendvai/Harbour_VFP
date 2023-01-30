@@ -32,3 +32,6 @@ vfp_from_harbour_foxpro_contrib.c
 hb_extra.c
 
 el_AUnpack.c
+
+hbwin.hbc
+el_GetProcessID.prg

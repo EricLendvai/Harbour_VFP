@@ -17,3 +17,6 @@ On the other hand, VFP is a superior for Graphical User Interface features, incl
 The Test folder currently only has one example: hb_vfp_Test.code-workspace (open with VSCODE)
 
 Please go to https://harbour.wiki for articles, documentation and message board search engine.
+
+## Development Note
+When changing the version, update the files hb_vfp.ch, vfp.ch, hb_vfp.prg (VFP_GetCompatibilityPackVersion()).

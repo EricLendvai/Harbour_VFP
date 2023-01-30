@@ -3,6 +3,9 @@
 #include "fileio.ch"
 #include "dbinfo.ch"
 
+//#include "hb_vfp.ch"   // Linker would crash of this was enabled.
+
+
 // #define DEVELOPMENTMODE
 // #ifdef DEVELOPMENTMODE
 // #endif
@@ -14,9 +17,7 @@
 //=================================================================================================================
 //=================================================================================================================
 function VFP_GetCompatibilityPackVersion()
-// altd()
-// return 1.3
-return 3.2
+return 3.3
 //=================================================================================================================
 //The VFP_ScanStack is to be used in conjuntion with the "#command SCAN" and "#command ENDSCAN"
 function VFP_ScanStack(par_action)    //action = "push" "pop" "scan" , "clear" (empty the entire stack)

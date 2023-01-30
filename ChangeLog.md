@@ -1,5 +1,8 @@
 # Harbour VFP - Change Log
 
+## 01/29/2023 v 3.3
+* New function el_GetProcessID(), compatible under Windows and Linux. Equivalent to "_VFP.ProcessID".
+
 ## 01/03/2023 v 3.2
 * Fixed issue with devcontainer builds
 * Updated devcontainer to use ubuntu:22.04

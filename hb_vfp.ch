@@ -1,8 +1,7 @@
 //Copyright (c) 2023 Eric Lendvai MIT License
 
 #ifndef HB_VFP_BUILDVERSION
-#define HB_VFP_BUILDVERSION "3.2"
-
+#define HB_VFP_BUILDVERSION "3.3"
 
 //#include "hbclass.ch"
 
