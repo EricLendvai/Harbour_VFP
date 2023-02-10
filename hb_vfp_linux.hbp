@@ -33,5 +33,4 @@ hb_extra.c
 
 el_AUnpack.c
 
-hbunix.hbc
 el_GetProcessID.prg

@@ -33,5 +33,4 @@ hb_extra.c
 
 el_AUnpack.c
 
-hbwin.hbc
 el_GetProcessID.prg
