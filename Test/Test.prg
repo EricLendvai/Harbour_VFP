@@ -14,6 +14,8 @@ local cVal2 := "y"
 local cVal3 := "z"
 local cVal4 := {-1}
 
+?"Process ID: ",el_GetProcessID()
+
 ?el_AUnpack({"Hello1",25,"World1",{41,2,1}},,@cVal2,@cVal3,@cVal4)
 
 ?"Will suspend"

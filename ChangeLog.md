@@ -1,5 +1,8 @@
 # Harbour VFP - Change Log
 
+## 02/15/2023 v 3.4
+* Simplified distribution of library by generating hb_vfp.hbc file.
+
 ## 01/29/2023 v 3.3
 * New function el_GetProcessID(), compatible under Windows and Linux. Equivalent to "_VFP.ProcessID".
 
