@@ -1,5 +1,8 @@
 # Harbour VFP - Change Log
 
+## 04/08/2023 v 3.4
+* Changed Dockerfiles of devcontainers to work around git install failure introduced around April 2023.
+
 ## 02/15/2023 v 3.4
 * Simplified distribution of library by generating hb_vfp.hbc file.
 
