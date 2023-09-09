@@ -1,7 +1,7 @@
 //Copyright (c) 2023 Eric Lendvai MIT License
 
 #ifndef HB_VFP_BUILDVERSION
-#define HB_VFP_BUILDVERSION "3.4"
+#define HB_VFP_BUILDVERSION "3.5"
 
 // When updating the HB_VFP_BUILDVERSION also update vfp.ch and function VFP_GetCompatibilityPackVersion() in hb_vfp.prg
 
@@ -74,7 +74,6 @@
 #xcommand SCAN WHILE <while> [NEXT <next>] [RECORD <rec>] [<rest:REST>] [NOOPTIMIZE] => ;
             VFP_ScanStack("push") ;;
             do while iif(VFP_ScanStack(),hb_isnil(__dbLocate({||.T.}, {||.T.}, <next>, <rec>, <.rest.> )) .and. Found() .and. !eof() .and. eval({||<while>}),hb_isnil(__dbContinue()) .and. Found() .and. !eof() .and. eval({||<while>}))
-
 
 //--------------------------------------------------------------------------------------------
 

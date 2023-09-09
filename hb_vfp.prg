@@ -17,7 +17,7 @@
 //=================================================================================================================
 //=================================================================================================================
 function VFP_GetCompatibilityPackVersion()
-return 3.4
+return 3.5
 //=================================================================================================================
 //The VFP_ScanStack is to be used in conjuntion with the "#command SCAN" and "#command ENDSCAN"
 function VFP_ScanStack(par_action)    //action = "push" "pop" "scan" , "clear" (empty the entire stack)

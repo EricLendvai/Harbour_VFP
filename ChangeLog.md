@@ -1,5 +1,8 @@
 # Harbour VFP - Change Log
 
+## 09/09/2023 v 3.5
+* Under Windows, for msvc64 C compiler, switch to Microsoft Visual Studio 2022
+
 ## 04/08/2023 v 3.4
 * Changed Dockerfiles of devcontainers to work around git install failure introduced around April 2023.
 

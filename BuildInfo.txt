@@ -1,1 +1,1 @@
-local l_cBuildInfo := "gcc release 02/15/2023 05:12:57"
+local l_cBuildInfo := "msvc64 debug 09/09/2023 11:26:51.47"
