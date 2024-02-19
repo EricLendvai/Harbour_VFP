@@ -4,7 +4,7 @@
 /*
  * FoxPro compatible functions BETWEEN(), INLIST()
  *
- * Copyright (c) 2023 Eric Lendvai Modifed __FOX_SEEK to Create VFP_SEEK
+ * Copyright (c) 2024 Eric Lendvai Modifed __FOX_SEEK to Create VFP_SEEK
  * Copyright 2016 Przemyslaw Czerpak <druzus / at / priv.onet.pl>
  *
  * This program is free software; you can redistribute it and/or modify

@@ -1,7 +1,7 @@
-//Copyright (c) 2023 Eric Lendvai MIT License
+//Copyright (c) 2024 Eric Lendvai MIT License
 
 #ifndef HB_VFP_BUILDVERSION
-#define HB_VFP_BUILDVERSION "3.5"
+#define HB_VFP_BUILDVERSION "3.6"
 
 // When updating the HB_VFP_BUILDVERSION also update vfp.ch and function VFP_GetCompatibilityPackVersion() in hb_vfp.prg
 

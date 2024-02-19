@@ -1,5 +1,8 @@
 # Harbour VFP - Change Log
 
+## 02/18/2024 v 3.6
+* Notice to discontinue support for this Repo. Will be switching to Harbour_EL (Harbour Extended Library)
+
 ## 09/09/2023 v 3.5
 * Under Windows, for msvc64 C compiler, switch to Microsoft Visual Studio 2022
 

@@ -1,7 +1,13 @@
 # Harbour_VFP
 
+THIS REPO IS NO LONGER BEING MAINTAINED.   
+
+For future enhancements use the Harbour_EL Repo instead. Since Microsoft announced the discontinuation of Visual FoxPro in 2007.   
+The new Harbour_EL repo will focus on extending features when missing, instead of simply being different than VFP.    
+Harbour_EL, which stands to "Extended Library" can be used for Web and Desktop applications.
+
 ## About this project
-Partial Compatibly For VFP 9 in Harbour
+Partial Compatibly For VFP 9 in Harbour.
 
 View [ChangeLog.md](ChangeLog.md) for list of enhancements and fixes.
 
